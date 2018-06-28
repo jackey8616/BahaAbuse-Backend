@@ -17,8 +17,8 @@
           </td>
           <td class="list__main">
             <a class="list__main__title" title="Link to Origin Article" :href="'https://forum.gamer.com.tw/' + item.main.url">{{ item.main.title }}</a>
-            <a title="Crawled Data" href="">
-            <font-awesome-icon :icon="['fas', 'file']"></font-awesome-icon>
+            <a title="Crawled Data" :href="articleUrl(item.detail)">
+              <font-awesome-icon :icon="['fas', 'file']"></font-awesome-icon>
             </a>
           </td>
           <td class="list__count">
@@ -53,12 +53,15 @@ export default {
       let date = jsDate.split('T')[0].slice(2)
       let hourMin = jsDate.split('T')[1].slice(0, 5)
       return date + ' ' + hourMin
+    },
+    articleUrl: function (detail) {
+      return `#/article-info/${detail.php}/${detail.bsn}/${detail.snA}/${detail.tnum}`
     }
   },
   mounted () {
     this.$ajax({
       'method': 'get',
-      'url': 'http://localhost:8000/article'
+      'url': 'http://localhost:8000/api/article-list'
     }).then(response => {
       this.subboards = response.data.response.subboards
       this.articles = response.data.response.articles

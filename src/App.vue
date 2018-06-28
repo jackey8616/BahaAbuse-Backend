@@ -2,9 +2,8 @@
   <div id="app" class="container">
     <!--img src="./assets/logo.png"-->
     <router-view/>
-    <div>
-      <article-list></article-list>
-    </div>
+    <router-view name="ArticleList"/>
+    <router-view name="ArticleInfo"/>
   </div>
 </template>
 

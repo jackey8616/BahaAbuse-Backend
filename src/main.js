@@ -8,24 +8,27 @@ import Axios from 'axios'
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faFile, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faFile, faUser, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
 
 // Bootstrap
 // import $ from 'jquery'
 import 'bootstrap/scss/bootstrap.scss'
 import 'bootstrap'
 
+import ArticleInfo from '@/components/ArticleInfo'
 import ArticleList from '@/components/ArticleList'
 
 library.add(
   faFile,
-  faUser
+  faUser,
+  faLocationArrow
 )
 
 Vue.config.productionTip = false
 Vue.prototype.$ajax = Axios
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('article-info', ArticleInfo)
 Vue.component('article-list', ArticleList)
 
 /* eslint-disable no-new */
