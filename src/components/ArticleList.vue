@@ -16,8 +16,9 @@
             <span class="list__summary__gp gp gp--normal" v-if="item.summary.gp > 0">{{ item.summary.gp }}</span>
           </td>
           <td class="list__main">
-            <a class="list__main__title" title="Link to Origin Article" :href="'https://forum.gamer.com.tw/' + item.main.url">{{ item.main.title }}</a>
-            <a title="Crawled Data" :href="articleUrl(item.detail)">
+            <a class="list__main__title" title="Link to Origin Article" v-if="articleExist(item.detail)" :href="'https://forum.gamer.com.tw/' + item.main.url">{{ item.main.title }}</a>
+            <a class="list__main__titl is-del" v-else>{{ item.main.title }}</a>
+            <a title="Crawled Data" v-if="articleExist(item.detail)" :href="articleUrl(item.detail)">
               <font-awesome-icon :icon="['fas', 'file']"></font-awesome-icon>
             </a>
           </td>
@@ -56,6 +57,9 @@ export default {
     },
     articleUrl: function (detail) {
       return `#/article-info/${detail.php}/${detail.bsn}/${detail.snA}/${detail.tnum}`
+    },
+    articleExist: function (detail) {
+      return detail.php
     }
   },
   mounted () {
@@ -129,6 +133,9 @@ export default {
     font-size: 15px;
     font-weight: bold;
     line-height: 1.5;
+  }
+  .list__main__title.is-del {
+    color: #cccccc;
   }
   /* Count */
   .list__count {

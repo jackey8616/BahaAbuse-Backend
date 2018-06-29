@@ -14,8 +14,9 @@
           <font-awesome-icon :icon="['fas', 'user']"></font-awesome-icon>
         </a>
       </p>
+      <p>Simhash: {{ article.content.body.simhash }}</p>
       <p>Article:</p>
-      <article v-html="article.content.html.body"/>
+      <article v-html="article.content.body.html"/>
   </div>
 </template>
 
@@ -32,9 +33,10 @@ export default {
           user: {}
         },
         content: {
-          html: {
-            header: null,
-            body: null
+          header: null,
+          body: {
+            html: null,
+            simhash: null
           }
         }
       }
