@@ -50,7 +50,7 @@ export default {
   mounted () {
     this.$ajax({
       'method': 'get',
-      'url': 'http://localhost:8000/api/article',
+      'url': 'http://127.0.0.1:8000/api/article',
       'params': this.$route.params
     }).then(response => {
       this.subboards = response.data.response.subboards

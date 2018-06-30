@@ -65,7 +65,7 @@ export default {
   mounted () {
     this.$ajax({
       'method': 'get',
-      'url': 'http://localhost:8000/api/article-list'
+      'url': 'http://127.0.0.1:8000/api/article-list'
     }).then(response => {
       this.subboards = response.data.response.subboards
       this.articles = response.data.response.articles
